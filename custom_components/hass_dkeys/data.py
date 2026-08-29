@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from homeassistant.config_entries import ConfigEntry
 
     from .api import DKeysApiClient
+    from .coordinator import DKeysCoordinator
 
 
 type DKeysConfigEntry = ConfigEntry[DKeysData]
@@ -18,4 +19,5 @@ type DKeysConfigEntry = ConfigEntry[DKeysData]
 class DKeysData:
     """Данные для интеграции D-Keys."""
 
-    client: DKeysApiClient
+    api: DKeysApiClient
+    coordinator: DKeysCoordinator
