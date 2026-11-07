@@ -28,7 +28,7 @@ async def async_setup_entry(
     api = DKeysApiClient(
         phone=entry.data[CONF_PHONE],
         token=entry.data[CONF_TOKEN],
-        session=async_get_clientsession(hass),
+        session=async_get_clientsession(hass, verify_ssl=False),
     )
     coordinator = DKeysCoordinator(hass, entry, api)
     await coordinator.async_config_entry_first_refresh()

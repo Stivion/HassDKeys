@@ -1,11 +1,13 @@
 """Константы."""
 
+from datetime import timedelta
 from logging import Logger, getLogger
 
 LOGGER: Logger = getLogger(__package__)
 
 DOMAIN = "hass_dkeys"
 KEY_MANUFACTURER = "D-Keys"
+UPDATE_INTERVAL = timedelta(seconds=120)
 
 DKEYS_BASE_URL = "https://mde.s-m-d.ru:38257/DKeys_app_3/MAIN.php/"
 DKEYS_OS = "android"

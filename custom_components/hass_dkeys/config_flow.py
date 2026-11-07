@@ -41,7 +41,9 @@ class DKeysFlowHandler(ConfigFlow, domain=DOMAIN):
                 _errors[CONF_PHONE] = ERR_INVALID_PHONE_FORMAT
 
             if not _errors:
-                api = DKeysApiClient(phone, "", async_get_clientsession(self.hass))
+                api = DKeysApiClient(
+                    phone, "", async_get_clientsession(self.hass, verify_ssl=False)
+                )
                 try:
                     if await api.request_phone_authentication():
                         self.phone = phone

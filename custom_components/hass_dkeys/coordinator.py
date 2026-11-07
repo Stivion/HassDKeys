@@ -1,7 +1,6 @@
 """Модуль содержит логику обновления информации о ключах."""
 
 import asyncio
-from datetime import timedelta
 from typing import TYPE_CHECKING
 
 from homeassistant.exceptions import ConfigEntryAuthFailed
@@ -13,7 +12,7 @@ from custom_components.hass_dkeys.api import (
     DKeysKey,
 )
 
-from .const import DOMAIN, LOGGER
+from .const import DOMAIN, LOGGER, UPDATE_INTERVAL
 
 if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
@@ -36,7 +35,7 @@ class DKeysCoordinator(DataUpdateCoordinator[list[DKeysKey]]):
             LOGGER,
             name=DOMAIN,
             config_entry=config_entry,
-            update_interval=timedelta(seconds=30),
+            update_interval=UPDATE_INTERVAL,
             always_update=True,
         )
         self.api = api
